@@ -1,7 +1,7 @@
 import streamlit as st
 import urllib.parse
 
-st.set_page_config(page_title="Buscador de DD", layout="centered")
+st.set_page_config(page_title="Buscador de DD", layout="wide")
 st.title("🔎 Generador de Búsquedas de Debida Diligencia")
 
 email = st.text_input("Introduce tu correo corporativo para continuar:")
@@ -12,7 +12,7 @@ if email.endswith("@grupomexgas.com"):
     nombre = st.text_input("Nombre de la empresa o persona a buscar:")
 
     if nombre:
-        criterios = {
+        criterios_es = {
             "Corrupción": "(\"corrupción\" OR \"soborno\" OR \"cohecho\" OR \"DOF\" OR \"SEC\" OR \"escándalo\" OR \"mordida\" OR \"comisión ilegal\" OR \"pago indebido\")",
             "Delitos financieros": "(\"fraude\" OR \"lavado de dinero\" OR \"evasión de impuestos\" OR \"paraíso fiscal\" OR \"información privilegiada\" OR \"manipulación\" OR \"falsificación\" OR \"malversación\" OR \"desfalco\" OR \"estafa\" OR \"blanqueo de capitales\" OR \"facturero\")",
             "Delitos penales": "(\"actividades ilegales\" OR \"crimen organizado\" OR \"narcotráfico\" OR \"drogas\" OR \"delito\" OR \"cártel\" OR \"tráfico\" OR \"criminal\" OR \"procesado\" OR \"acusado\" OR \"condenado\" OR \"crimen de guerra\" OR \"huachicol\")",
@@ -25,15 +25,40 @@ if email.endswith("@grupomexgas.com"):
             "Riesgo político y conexiones gubernamentales": "(\"político\" OR \"gobierno\" OR \"servicio público\" OR \"funcionario\" OR \"cargo público\" OR \"partido político\" OR \"congreso\" OR \"senado\" OR \"legislador\" OR \"donación política\" OR \"vínculo político\" OR \"conflicto de interés\")"
         }
 
-        st.markdown("### 🔗 Enlaces generados por categoría")
-        for categoria, expresion in criterios.items():
-            cadena_busqueda = f'"{nombre}" AND {expresion}'
-            url_google = f"https://www.google.com/search?q={urllib.parse.quote(cadena_busqueda)}"
-            url_bing = f"https://www.bing.com/search?q={urllib.parse.quote(cadena_busqueda)}"
+        criterios_en = {
+            "Corruption": "(\"corruption\" OR \"bribery\" OR \"kickback\" OR \"DOF\" OR \"SEC\" OR \"scandal\" OR \"grease payment\" OR \"illegal commission\" OR \"undue payment\")",
+            "Financial Crimes": "(\"fraud\" OR \"money laundering\" OR \"tax evasion\" OR \"tax haven\" OR \"insider trading\" OR \"manipulation\" OR \"forgery\" OR \"embezzlement\" OR \"misappropriation\" OR \"scam\" OR \"capital washing\" OR \"shell company\")",
+            "Criminal Offenses": "(\"illegal activities\" OR \"organized crime\" OR \"drug trafficking\" OR \"drugs\" OR \"crime\" OR \"cartel\" OR \"trafficking\" OR \"criminal\" OR \"indicted\" OR \"accused\" OR \"convicted\" OR \"war crime\" OR \"fuel theft\")",
+            "Sanctions and Regulation": "(\"sanctioned\" OR \"penalty\" OR \"suspended\" OR \"fine\" OR \"disqualification\" OR \"warning\" OR \"regulator\" OR \"irregular\" OR \"irregularity\" OR \"non-compliance\" OR \"regulatory violation\")",
+            "Human Rights and Labor Conditions": "(\"human rights\" OR \"rights violation\" OR \"slavery\" OR \"forced labor\" OR \"exploitation\" OR \"inhumane conditions\" OR \"unsanitary conditions\" OR \"environmental violation\" OR \"discrimination\" OR \"harassment\" OR \"abuse\")",
+            "Terrorism and Illicit Financing": "(\"terrorism\" OR \"terrorist financing\" OR \"extremism\" OR \"terrorist group\" OR \"radicalization\" OR \"illicit financing\" OR \"international sanction\" OR \"blacklist\" OR \"watchlist\" OR \"OFAC\")",
+            "Lawsuits and Legal Issues": "(\"lawsuit\" OR \"defendant\" OR \"litigation\" OR \"legal dispute\" OR \"challenge\" OR \"appeal\" OR \"complaint\" OR \"summons\" OR \"patent infringement\" OR \"IP infringement\" OR \"dispute\" OR \"legal conflict\")",
+            "Insolvency and Financial Problems": "(\"bankruptcy\" OR \"insolvency\" OR \"insolvent\" OR \"collapse\" OR \"payment suspension\" OR \"restructuring\" OR \"financial distress\" OR \"financial coercion\" OR \"seizure\" OR \"liquidation\" OR \"creditors' meeting\")",
+            "Criminal Justice and Cooperation": "(\"criminal investigation\" OR \"federal police\" OR \"prosecutor\" OR \"criminal proceedings\" OR \"plea bargain\" OR \"leniency agreement\" OR \"protected witness\" OR \"effective collaboration\" OR \"whistleblower\")",
+            "Political Risk and Government Ties": "(\"political\" OR \"government\" OR \"public service\" OR \"official\" OR \"public office\" OR \"political party\" OR \"congress\" OR \"senate\" OR \"legislator\" OR \"political donation\" OR \"political ties\" OR \"conflict of interest\")"
+        }
 
-            st.markdown(f"**{categoria}**")
-            st.markdown(f"- [Buscar en Google]({url_google})")
-            st.markdown(f"- [Buscar en Bing]({url_bing})")
+        col1, col2 = st.columns(2)
+
+        with col1:
+            st.markdown("### 🇲🇽 Enlaces en Español")
+            for categoria, expresion in criterios_es.items():
+                cadena_busqueda = f'"{nombre}" AND {expresion}'
+                url_google = f"https://www.google.com/search?q={urllib.parse.quote(cadena_busqueda)}"
+                url_bing = f"https://www.bing.com/search?q={urllib.parse.quote(cadena_busqueda)}"
+                st.markdown(f"**{categoria}**")
+                st.markdown(f"- [Buscar en Google]({url_google})")
+                st.markdown(f"- [Buscar en Bing]({url_bing})")
+
+        with col2:
+            st.markdown("### 🇺🇸 Links in English")
+            for categoria, expresion in criterios_en.items():
+                cadena_busqueda = f'"{nombre}" AND {expresion}'
+                url_google = f"https://www.google.com/search?q={urllib.parse.quote(cadena_busqueda)}"
+                url_bing = f"https://www.bing.com/search?q={urllib.parse.quote(cadena_busqueda)}"
+                st.markdown(f"**{categoria}**")
+                st.markdown(f"- [Search on Google]({url_google})")
+                st.markdown(f"- [Search on Bing]({url_bing})")
 
 else:
     if email:
