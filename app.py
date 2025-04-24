@@ -1,6 +1,8 @@
 import streamlit as st
 import urllib.parse
 from PIL import Image
+from datetime import datetime
+import csv
 
 st.set_page_config(page_title="Buscador de DD", layout="wide")
 
@@ -20,6 +22,12 @@ El presente ejercicio identifica **112 términos** seleccionados por su frecuenc
 
 La aplicación genera enlaces de búsqueda en **Google** y **Bing**, que permiten consultar fuentes públicas rápidamente con criterios homogéneos y auditables.
 """)
+
+# Función para registrar logs
+def log_busqueda(usuario, nombre_buscado):
+    with open('log_busquedas.csv', 'a', newline='', encoding='utf-8') as file:
+        writer = csv.writer(file)
+        writer.writerow([datetime.now(), usuario, nombre_buscado])
 
 email = st.text_input("Introduce tu correo de Mex Gas y continúa presionando Enter:")
 
