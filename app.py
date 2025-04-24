@@ -41,7 +41,7 @@ if email.endswith("@grupomexgas.com"):
         col1, col2 = st.columns(2)
 
         with col1:
-            st.markdown("### 🇲🇽 Enlaces en Español")
+            st.markdown("### Enlaces en Español")
             for categoria, expresion in criterios_es.items():
                 cadena_busqueda = f'"{nombre}" AND {expresion}'
                 url_google = f"https://www.google.com/search?q={urllib.parse.quote(cadena_busqueda)}"
@@ -51,7 +51,7 @@ if email.endswith("@grupomexgas.com"):
                 st.markdown(f"- [Buscar en Bing]({url_bing})")
 
         with col2:
-            st.markdown("### 🇺🇸 Links in English")
+            st.markdown("### Links in English")
             for categoria, expresion in criterios_en.items():
                 cadena_busqueda = f'"{nombre}" AND {expresion}'
                 url_google = f"https://www.google.com/search?q={urllib.parse.quote(cadena_busqueda)}"
