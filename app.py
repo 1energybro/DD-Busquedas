@@ -1,8 +1,24 @@
 import streamlit as st
 import urllib.parse
+from PIL import Image
 
 st.set_page_config(page_title="Buscador de DD", layout="wide")
+
+# Cargar logo
+logo = Image.open("logo_mgi.png")
+st.image(logo, width=150)
+
+# Introducción explicativa
 st.title("🔎 Generador de Búsquedas de Debida Diligencia")
+st.markdown("""
+El presente programa fue elaborado por la **Gerencia de Planeación Estratégica** y la **Gerencia de Compliance** de *Mex Gas Internacional*.
+
+Su propósito es facilitar la verificación digital de antecedentes públicos sobre personas físicas y morales mediante términos de búsqueda estructurados en **10 categorías temáticas**.
+
+Cada categoría incluye entre **10 y 14 términos clave**, en versiones **español** e **inglés**, seleccionados por su frecuencia de aparición en escándalos, litigios, sanciones, investigaciones periodísticas y regulatorias.
+
+La aplicación genera enlaces de búsqueda en **Google** y **Bing**, que permiten consultar fuentes públicas rápidamente con criterios homogéneos y auditables.
+""")
 
 email = st.text_input("Introduce tu correo corporativo para continuar:")
 
@@ -38,10 +54,10 @@ if email.endswith("@grupomexgas.com"):
             "Political Risk and Government Ties": "(\"political\" OR \"government\" OR \"public service\" OR \"official\" OR \"public office\" OR \"political party\" OR \"congress\" OR \"senate\" OR \"legislator\" OR \"political donation\" OR \"political ties\" OR \"conflict of interest\")"
         }
 
-        col1, col2 = st.columns(2)
+        col1, col2 = st.columns(2, gap="large")
 
         with col1:
-            st.markdown("### Enlaces en Español")
+            st.markdown("### 🇲🇽 Enlaces en Español")
             for categoria, expresion in criterios_es.items():
                 cadena_busqueda = f'"{nombre}" AND {expresion}'
                 url_google = f"https://www.google.com/search?q={urllib.parse.quote(cadena_busqueda)}"
@@ -51,7 +67,7 @@ if email.endswith("@grupomexgas.com"):
                 st.markdown(f"- [Buscar en Bing]({url_bing})")
 
         with col2:
-            st.markdown("### Links in English")
+            st.markdown("### 🇺🇸 Links in English")
             for categoria, expresion in criterios_en.items():
                 cadena_busqueda = f'"{nombre}" AND {expresion}'
                 url_google = f"https://www.google.com/search?q={urllib.parse.quote(cadena_busqueda)}"
