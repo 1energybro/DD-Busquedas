@@ -25,7 +25,7 @@ email = st.text_input("Introduce tu correo de Mex Gas y continúa presionando En
 if email.endswith("@grupomexgas.com"):
     st.success("Acceso concedido")
 
-    nombre = st.text_input("Nombre de la empresa o persona a buscar:")
+    nombre = st.text_input("Introduce el nombre de la empresa o persona a buscar y presiona enter:")
 
     if nombre:
         criterios_es = {
@@ -57,7 +57,7 @@ if email.endswith("@grupomexgas.com"):
         col1, col2 = st.columns(2, gap="large")
 
         with col1:
-            st.markdown("### 🇲🇽 Enlaces en Español")
+            st.markdown("### Enlaces en Español")
             for categoria, expresion in criterios_es.items():
                 cadena_busqueda = f'"{nombre}" AND {expresion}'
                 url_google = f"https://www.google.com/search?q={urllib.parse.quote(cadena_busqueda)}"
@@ -67,7 +67,7 @@ if email.endswith("@grupomexgas.com"):
                 st.markdown(f"- [Buscar en Bing]({url_bing})")
 
         with col2:
-            st.markdown("### 🇺🇸 Links in English")
+            st.markdown("### Links in English")
             for categoria, expresion in criterios_en.items():
                 cadena_busqueda = f'"{nombre}" AND {expresion}'
                 url_google = f"https://www.google.com/search?q={urllib.parse.quote(cadena_busqueda)}"
