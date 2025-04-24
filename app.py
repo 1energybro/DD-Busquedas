@@ -10,20 +10,8 @@ if email.endswith("@grupomexgas.com"):
     st.success("Acceso concedido")
 
     nombre = st.text_input("Nombre de la empresa o persona a buscar:")
-    categoria = st.selectbox("Categoría de búsqueda:", [
-        "Corrupción",
-        "Delitos financieros",
-        "Delitos penales",
-        "Sanciones y regulación",
-        "Derechos humanos y condiciones laborales",
-        "Terrorismo y financiamiento ilícito",
-        "Litigios y problemas legales",
-        "Insolvencia y problemas financieros",
-        "Justicia penal y cooperación",
-        "Riesgo político y conexiones gubernamentales"
-    ])
 
-    if st.button("Generar links") and nombre:
+    if nombre:
         criterios = {
             "Corrupción": "(\"corrupción\" OR \"soborno\" OR \"cohecho\" OR \"DOF\" OR \"SEC\" OR \"escándalo\" OR \"mordida\" OR \"comisión ilegal\" OR \"pago indebido\")",
             "Delitos financieros": "(\"fraude\" OR \"lavado de dinero\" OR \"evasión de impuestos\" OR \"paraíso fiscal\" OR \"información privilegiada\" OR \"manipulación\" OR \"falsificación\" OR \"malversación\" OR \"desfalco\" OR \"estafa\" OR \"blanqueo de capitales\" OR \"facturero\")",
@@ -37,13 +25,15 @@ if email.endswith("@grupomexgas.com"):
             "Riesgo político y conexiones gubernamentales": "(\"político\" OR \"gobierno\" OR \"servicio público\" OR \"funcionario\" OR \"cargo público\" OR \"partido político\" OR \"congreso\" OR \"senado\" OR \"legislador\" OR \"donación política\" OR \"vínculo político\" OR \"conflicto de interés\")"
         }
 
-        cadena_busqueda = f'"{nombre}" AND ' + criterios[categoria]
-        url_google = f"https://www.google.com/search?q={urllib.parse.quote(cadena_busqueda)}"
-        url_bing = f"https://www.bing.com/search?q={urllib.parse.quote(cadena_busqueda)}"
+        st.markdown("### 🔗 Enlaces generados por categoría")
+        for categoria, expresion in criterios.items():
+            cadena_busqueda = f'"{nombre}" AND {expresion}'
+            url_google = f"https://www.google.com/search?q={urllib.parse.quote(cadena_busqueda)}"
+            url_bing = f"https://www.bing.com/search?q={urllib.parse.quote(cadena_busqueda)}"
 
-        st.markdown("### 🔗 Enlaces generados")
-        st.markdown(f"[Buscar en Google]({url_google})")
-        st.markdown(f"[Buscar en Bing]({url_bing})")
+            st.markdown(f"**{categoria}**")
+            st.markdown(f"- [Buscar en Google]({url_google})")
+            st.markdown(f"- [Buscar en Bing]({url_bing})")
 
 else:
     if email:
