@@ -11,11 +11,11 @@ st.image(logo, width=150)
 # Introducción explicativa
 st.title("🔎 Generador de Búsquedas de Debida Diligencia")
 st.markdown("""
-El presente programa fue elaborado por la **Gerencia de Planeación Estratégica** y la **Gerencia de Compliance** de *Mex Gas Internacional*.
+El presente programa fue elaborado por la **Gerencia de Planeación Estratégica** y la **Gerencia de Compliance** de **Mex Gas Internacional**.
 
 Su propósito es facilitar la verificación digital de antecedentes públicos sobre personas físicas y morales mediante términos de búsqueda estructurados en **10 categorías temáticas**.
 
-Cada categoría incluye entre **10 y 14 términos clave**, en versiones **español** e **inglés**, seleccionados por su frecuencia de aparición en escándalos, litigios, sanciones, investigaciones periodísticas y regulatorias.
+El presente ejercicio identifica 112 términos seleccionados por su frecuencia de aparición en litigios, sanciones, investigaciones periodísticas y regulatorias.
 
 La aplicación genera enlaces de búsqueda en **Google** y **Bing**, que permiten consultar fuentes públicas rápidamente con criterios homogéneos y auditables.
 """)
