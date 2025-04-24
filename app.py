@@ -20,7 +20,7 @@ El presente ejercicio identifica *112 términos* seleccionados por su frecuencia
 La aplicación genera enlaces de búsqueda en **Google** y **Bing**, que permiten consultar fuentes públicas rápidamente con criterios homogéneos y auditables.
 """)
 
-email = st.text_input("Introduce tu correo corporativo para continuar:")
+email = st.text_input("Introduce tu correo de Mex Gas y continúa presionando Enter:")
 
 if email.endswith("@grupomexgas.com"):
     st.success("Acceso concedido")
