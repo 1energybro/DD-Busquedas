@@ -32,7 +32,7 @@ def log_busqueda(usuario, nombre_buscado):
 email = st.text_input("Introduce tu correo de Mex Gas y continúa presionando Enter:")
 
 if email.endswith("@grupomexgas.com"):
-    st.success("Acceso concedido")
+    st.success(f"Acceso concedido para: {email}")
 
     nombre = st.text_input("Introduce el nombre de la empresa o persona a buscar y presiona Enter:")
 
@@ -84,7 +84,6 @@ if email.endswith("@grupomexgas.com"):
                 st.markdown(f"**{categoria}**")
                 st.markdown(f"- [Search on Google]({url_google})")
                 st.markdown(f"- [Search on Bing]({url_bing})")
-
 else:
     if email:
         st.error("Acceso denegado: usa un correo @grupomexgas.com")
