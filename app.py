@@ -26,7 +26,7 @@ email = st.text_input("Introduce tu correo de Mex Gas y continúa presionando En
 if email.endswith("@grupomexgas.com"):
     st.success("Acceso concedido")
 
-    nombre = st.text_input("Introduce el nombre de la empresa o persona a buscar y presiona enter:")
+    nombre = st.text_input("Introduce el nombre de la empresa o persona a buscar y presiona Enter:")
 
     if nombre:
         criterios_es = {
