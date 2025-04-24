@@ -15,7 +15,7 @@ El presente programa fue elaborado por la **Gerencia de Planeación Estratégica
 
 Su propósito es facilitar la verificación digital de antecedentes públicos sobre personas físicas y morales mediante términos de búsqueda estructurados en **10 categorías temáticas**.
 
-El presente ejercicio identifica 112 términos seleccionados por su frecuencia de aparición en litigios, sanciones, investigaciones periodísticas y regulatorias.
+El presente ejercicio identifica *112 términos* seleccionados por su frecuencia de aparición en litigios, sanciones, investigaciones periodísticas y regulatorias.
 
 La aplicación genera enlaces de búsqueda en **Google** y **Bing**, que permiten consultar fuentes públicas rápidamente con criterios homogéneos y auditables.
 """)
