@@ -88,7 +88,7 @@ if email.endswith("@grupomexgas.com"):
 
         for nombre in nombres:
             col1, col2 = st.columns(2, gap="large")
-
+        
             with col1:
                 st.markdown(f"### Enlaces en Español para **{nombre}**")
                 for categoria, expresion in criterios_es.items():
@@ -98,7 +98,7 @@ if email.endswith("@grupomexgas.com"):
                     st.markdown(f"**{categoria}**")
                     st.markdown(f"- [Buscar en Google]({url_google})")
                     st.markdown(f"- [Buscar en Bing]({url_bing})")
-
+        
             with col2:
                 st.markdown(f"### Links in English for **{nombre}**")
                 for categoria, expresion in criterios_en.items():
@@ -108,7 +108,12 @@ if email.endswith("@grupomexgas.com"):
                     st.markdown(f"**{categoria}**")
                     st.markdown(f"- [Search on Google]({url_google})")
                     st.markdown(f"- [Search on Bing]({url_bing})")
-
+        
+            # Barra divisoria personalizada en color guinda
+            st.markdown(
+                "<hr style='border: 2px solid #800000; margin-top: 50px; margin-bottom: 50px;'>",
+                unsafe_allow_html=True
+            )
 else:
     if email:
         st.error("Acceso denegado: usa un correo @grupomexgas.com")
