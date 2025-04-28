@@ -95,7 +95,11 @@ if email.endswith("@grupomexgas.com"):
                     cadena_busqueda = f'"{nombre}" AND {expresion}'
                     url_google = f"https://www.google.com/search?q={urllib.parse.quote(cadena_busqueda)}"
                     url_bing = f"https://www.bing.com/search?q={urllib.parse.quote(cadena_busqueda)}"
-                    st.markdown(f"**{categoria}**")
+                    # Categoría con tooltip (hover muestra términos)
+                    st.markdown(
+                        f"<p style='font-weight:bold; font-size:18px;' title='{expresion}'>{categoria}</p>",
+                        unsafe_allow_html=True
+                    )             
                     st.markdown(f"- [Buscar en Google]({url_google})")
                     st.markdown(f"- [Buscar en Bing]({url_bing})")
         
@@ -105,6 +109,7 @@ if email.endswith("@grupomexgas.com"):
                     cadena_busqueda = f'"{nombre}" AND {expresion}'
                     url_google = f"https://www.google.com/search?q={urllib.parse.quote(cadena_busqueda)}"
                     url_bing = f"https://www.bing.com/search?q={urllib.parse.quote(cadena_busqueda)}"
+    
                     st.markdown(f"**{categoria}**")
                     st.markdown(f"- [Search on Google]({url_google})")
                     st.markdown(f"- [Search on Bing]({url_bing})")
