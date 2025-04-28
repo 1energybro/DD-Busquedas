@@ -92,16 +92,15 @@ if email.endswith("@grupomexgas.com"):
 
         for nombre in nombres:
             col1, col2 = st.columns(2, gap="large")
-        
+
             with col1:
                 st.markdown(f"### Enlaces en Español para **{nombre}**")
                 for categoria, expresion in criterios_es.items():
                     cadena_busqueda = f'"{nombre}" AND {expresion}'
                     url_google = f"https://www.google.com/search?q={urllib.parse.quote(cadena_busqueda)}"
                     url_bing = f"https://www.bing.com/search?q={urllib.parse.quote(cadena_busqueda)}"
-                    # Categoría con tooltip (hover muestra términos)
                     st.markdown(
-                        f"<p style='font-weight:bold; font-size:18px;' title='{expresion}'>{categoria}</p>",
+                        f"<span title='{expresion}' style='font-weight:bold; font-size:18px;'>{categoria}</span><br>",
                         unsafe_allow_html=True
                     )
                     st.markdown(f"- [Buscar en Google]({url_google})")
@@ -113,19 +112,19 @@ if email.endswith("@grupomexgas.com"):
                     cadena_busqueda = f'"{nombre}" AND {expresion}'
                     url_google = f"https://www.google.com/search?q={urllib.parse.quote(cadena_busqueda)}"
                     url_bing = f"https://www.bing.com/search?q={urllib.parse.quote(cadena_busqueda)}"
-                    # Categoría con tooltip
                     st.markdown(
-                        f"<p style='font-weight:bold; font-size:18px;' title='{expresion}'>{categoria}</p>",
+                        f"<span title='{expresion}' style='font-weight:bold; font-size:18px;'>{categoria}</span><br>",
                         unsafe_allow_html=True
                     )
                     st.markdown(f"- [Search on Google]({url_google})")
                     st.markdown(f"- [Search on Bing]({url_bing})")
-        
-            # Barra divisoria personalizada en color guinda
+
+            # Barra divisoria personalizada
             st.markdown(
                 "<hr style='border: 2px solid #800000; margin-top: 50px; margin-bottom: 50px;'>",
                 unsafe_allow_html=True
             )
+
 else:
     if email:
         st.error("Acceso denegado: usa un correo @grupomexgas.com")
