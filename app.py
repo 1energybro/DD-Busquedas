@@ -99,8 +99,9 @@ if email.endswith("@grupomexgas.com"):
                     cadena_busqueda = f'"{nombre}" AND {expresion}'
                     url_google = f"https://www.google.com/search?q={urllib.parse.quote(cadena_busqueda)}"
                     url_bing = f"https://www.bing.com/search?q={urllib.parse.quote(cadena_busqueda)}"
+                    expresion_safe = expresion.replace('"', '&quot;')  # <<=== ESCAPAR aquí
                     st.markdown(
-                        f"<span title='{expresion}' style='font-weight:bold; font-size:18px;'>{categoria}</span><br>",
+                        f"<span title='{expresion_safe}' style='font-weight:bold; font-size:18px;'>{categoria}</span><br>",
                         unsafe_allow_html=True
                     )
                     st.markdown(f"- [Buscar en Google]({url_google})")
@@ -112,8 +113,9 @@ if email.endswith("@grupomexgas.com"):
                     cadena_busqueda = f'"{nombre}" AND {expresion}'
                     url_google = f"https://www.google.com/search?q={urllib.parse.quote(cadena_busqueda)}"
                     url_bing = f"https://www.bing.com/search?q={urllib.parse.quote(cadena_busqueda)}"
+                    expresion_safe = expresion.replace('"', '&quot;')  # <<=== ESCAPAR aquí también
                     st.markdown(
-                        f"<span title='{expresion}' style='font-weight:bold; font-size:18px;'>{categoria}</span><br>",
+                        f"<span title='{expresion_safe}' style='font-weight:bold; font-size:18px;'>{categoria}</span><br>",
                         unsafe_allow_html=True
                     )
                     st.markdown(f"- [Search on Google]({url_google})")
