@@ -34,9 +34,32 @@ email = st.text_input("Introduce tu correo de Mex Gas y continúa presionando En
 if email.endswith("@grupomexgas.com"):
     st.success(f"Acceso concedido para: {email}")
 
-    nombre = st.text_input("Introduce el nombre de la empresa o persona a buscar y presiona Enter:")
+    # Crear 3 columnas de 5 nombres cada una
+    col1, col2, col3 = st.columns(3)
+    nombres = []
 
-    if nombre:
+    with col1:
+        st.subheader("Nombres (1-5)")
+        for i in range(1, 6):
+            nombre = st.text_input(f"Nombre {i}", key=f"nombre_{i}")
+            if nombre:
+                nombres.append(nombre)
+
+    with col2:
+        st.subheader("Nombres (6-10)")
+        for i in range(6, 11):
+            nombre = st.text_input(f"Nombre {i}", key=f"nombre_{i}")
+            if nombre:
+                nombres.append(nombre)
+
+    with col3:
+        st.subheader("Nombres (11-15)")
+        for i in range(11, 16):
+            nombre = st.text_input(f"Nombre {i}", key=f"nombre_{i}")
+            if nombre:
+                nombres.append(nombre)
+
+    if nombres:
         criterios_es = {
             "Corrupción": "(\"corrupción\" OR \"soborno\" OR \"cohecho\" OR \"DOF\" OR \"SEC\" OR \"escándalo\" OR \"mordida\" OR \"comisión ilegal\" OR \"pago indebido\")",
             "Delitos financieros": "(\"fraude\" OR \"lavado de dinero\" OR \"evasión de impuestos\" OR \"paraíso fiscal\" OR \"información privilegiada\" OR \"manipulación\" OR \"falsificación\" OR \"malversación\" OR \"desfalco\" OR \"estafa\" OR \"blanqueo de capitales\" OR \"facturero\")",
@@ -63,27 +86,29 @@ if email.endswith("@grupomexgas.com"):
             "Political Risk and Government Ties": "(\"political\" OR \"government\" OR \"public service\" OR \"official\" OR \"public office\" OR \"political party\" OR \"congress\" OR \"senate\" OR \"legislator\" OR \"political donation\" OR \"political ties\" OR \"conflict of interest\")"
         }
 
-        col1, col2 = st.columns(2, gap="large")
+        for nombre in nombres:
+            col1, col2 = st.columns(2, gap="large")
 
-        with col1:
-            st.markdown("### Enlaces en Español")
-            for categoria, expresion in criterios_es.items():
-                cadena_busqueda = f'"{nombre}" AND {expresion}'
-                url_google = f"https://www.google.com/search?q={urllib.parse.quote(cadena_busqueda)}"
-                url_bing = f"https://www.bing.com/search?q={urllib.parse.quote(cadena_busqueda)}"
-                st.markdown(f"**{categoria}**")
-                st.markdown(f"- [Buscar en Google]({url_google})")
-                st.markdown(f"- [Buscar en Bing]({url_bing})")
+            with col1:
+                st.markdown(f"### Enlaces en Español para **{nombre}**")
+                for categoria, expresion in criterios_es.items():
+                    cadena_busqueda = f'"{nombre}" AND {expresion}'
+                    url_google = f"https://www.google.com/search?q={urllib.parse.quote(cadena_busqueda)}"
+                    url_bing = f"https://www.bing.com/search?q={urllib.parse.quote(cadena_busqueda)}"
+                    st.markdown(f"**{categoria}**")
+                    st.markdown(f"- [Buscar en Google]({url_google})")
+                    st.markdown(f"- [Buscar en Bing]({url_bing})")
 
-        with col2:
-            st.markdown("### Links in English")
-            for categoria, expresion in criterios_en.items():
-                cadena_busqueda = f'"{nombre}" AND {expresion}'
-                url_google = f"https://www.google.com/search?q={urllib.parse.quote(cadena_busqueda)}"
-                url_bing = f"https://www.bing.com/search?q={urllib.parse.quote(cadena_busqueda)}"
-                st.markdown(f"**{categoria}**")
-                st.markdown(f"- [Search on Google]({url_google})")
-                st.markdown(f"- [Search on Bing]({url_bing})")
+            with col2:
+                st.markdown(f"### Links in English for **{nombre}**")
+                for categoria, expresion in criterios_en.items():
+                    cadena_busqueda = f'"{nombre}" AND {expresion}'
+                    url_google = f"https://www.google.com/search?q={urllib.parse.quote(cadena_busqueda)}"
+                    url_bing = f"https://www.bing.com/search?q={urllib.parse.quote(cadena_busqueda)}"
+                    st.markdown(f"**{categoria}**")
+                    st.markdown(f"- [Search on Google]({url_google})")
+                    st.markdown(f"- [Search on Bing]({url_bing})")
+
 else:
     if email:
         st.error("Acceso denegado: usa un correo @grupomexgas.com")
